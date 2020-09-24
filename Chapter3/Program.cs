@@ -10,45 +10,21 @@ namespace Chapter3 {
         //デリゲートの宣言（int型の引数を受け取ってboolを値を返すメソッド）
         public delegate bool Judgement(int value);
         static void Main(string[] args) {
-            var numbers = new[] { 5, 3, 9, 6, 7, 5, 8, 1, 0, 5, 10, 4 };
-            //Judgement judge = IsEven;
-            //Judgement fo = FiveOver;
 
-            //匿名メソッドを利用した例
-            //int count = Count(numbers,
-            //    delegate(int n) { 
-            //        return (n>=5); 
-            //    });
+            var list = new List<string> {
+                "Tokyo","New Delhi","Bangkok","London","Paris","Berlon","Canberra","Hong Kong",
+            };
 
-            //ラムダ式
-            int count = Count(numbers, (int n) =>  5 <= n && n <= 8);
-            //int f5 = Count(numbers,fo);
+            //list.ForEach(s=> Console.WriteLine(s));
+            list.ConvertAll(s=>s.ToUpper()).ForEach(s => Console.WriteLine(s));
 
-            Console.WriteLine(count);
-        }
+            //var name = list.FindAll(s => s.Length <= 5);
 
-        //nが偶数かどうかを調べるメソッド
-        public static bool IsEven(int n) {
-            //if (n % 2 == 0) {
-            //    return true;
-            //} else {
-            //    return false;
+            //foreach (var na in name) {
+            //    Console.WriteLine(na);
             //}
-            return (n%2 == 0);
-        }
-        //nが5以上かどうかを調べる
-        public static bool FiveOver(int n) {
-            return (n >= 5);
-        }
+        
 
-        public static int Count(int[] numbers,Judgement judge) {
-            
-            int count = 0;
-            foreach (var n in numbers) {
-                if (judge(n)==true)
-                    count++;
-            }
-            return count;
         }
     }
 }
