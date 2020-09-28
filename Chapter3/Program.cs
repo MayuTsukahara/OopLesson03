@@ -32,12 +32,13 @@ namespace Chapter3 {
             var query3 = numbers.Where(s=> s>=50);
             foreach (var item in query3){
                 Console.WriteLine(item);
-	        }Console.WriteLine();
+	        }
+            Console.WriteLine();
 
 
-            var query4 = numbers.Select(s=> s*2);
-            foreach (var item in query4){
-
+            var list = numbers.Select(s=> s*2).ToList();
+            foreach (var item in list){
+                Console.WriteLine(item);
 	        }
 
             //query2.ForEach(s=> Console.WriteLine(s));
