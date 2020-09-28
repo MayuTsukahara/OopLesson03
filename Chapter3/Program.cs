@@ -40,6 +40,8 @@ namespace Chapter3 {
                 Console.WriteLine(item);
 	        }
             Console.WriteLine();Console.WriteLine();
+            //先生の書き方↓
+            //numbers.Select(x=> x*2).ToList().ForEach(Console.WriteLine);
             #endregion
 
             #region 演習3-2
@@ -51,6 +53,16 @@ namespace Chapter3 {
             var Snum = names.FindIndex(s=> s == search);
             Console.WriteLine(Snum == null ? -1 : Snum);
             Console.WriteLine();
+
+            do{
+                var line = Console.ReadLine();
+                if(string.IsNullOrEmpty(line)){
+                    break;
+                }
+                var index = names.FindIndex(s=> s==line);
+                Console.WriteLine(index);
+            }while(true);
+           
 
             Console.WriteLine(names.Count(s=> s.Contains('o')));
             Console.WriteLine();
