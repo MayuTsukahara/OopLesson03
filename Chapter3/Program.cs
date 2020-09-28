@@ -16,8 +16,7 @@ namespace Chapter3 {
             };
 
             //★3.1 練習問題
-
-            
+            #region 演習3-1
             var query = numbers.Exists(s=> s%8 == 0 || s%9 == 0);
             Console.WriteLine(query);
             Console.WriteLine();
@@ -40,6 +39,32 @@ namespace Chapter3 {
             foreach (var item in list){
                 Console.WriteLine(item);
 	        }
+            Console.WriteLine();Console.WriteLine();
+            #endregion
+
+            #region 演習3-2
+            var names = new List<String>{
+                "Tokyo","New Delhi","Bangkok","London","Paris","Berlin","Canberra","Hong Kong",
+            };
+
+            string search = Console.ReadLine();
+            var Snum = names.FindIndex(s=> s == search);
+            Console.WriteLine(Snum == null ? -1 : Snum);
+            Console.WriteLine();
+
+            Console.WriteLine(names.Count(s=> s.Contains('o')));
+            Console.WriteLine();
+
+            var list2 = names.Where(s=>s.Contains('o')).ToList();
+            list2.ForEach(s=> Console.WriteLine(s));
+            Console.WriteLine();
+
+            var list3 = names.Where(s => s.StartsWith("B")).Select(s => s.Length);
+            foreach (var item in list3){
+                Console.WriteLine(item);
+	        }
+
+            #endregion
 
             //query2.ForEach(s=> Console.WriteLine(s));
 	        
