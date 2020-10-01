@@ -1,24 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Chapter4 {
     class Program {
         static void Main(string[] args) {
-            string code = "12345";
+            Console.WriteLine(GetProduct());
+        }
+        private static string GetProduct() {
+            Sale sale = new Sale {
+                ShopName = "pet store",
+                Amount = 100000,
+                Product = "food"
+            };
+            sale = null;    //saleがnullだとnullが返ってくる
+            return sale?.Product;   //nullじゃないからProductの値が返ってくる
+        }
+    }
 
-            var message = GetMessage(code) ?? DefoultMessage();
-            Console.WriteLine(message);
-        }
-        //スタブ
-        private static object DefoultMessage() {
-            return "よちのかわいいDefoultMessage";
-        }
-        //スタブ
-        private static object GetMessage(string code) {
-            return "123";
-        }
+    class Sale {
+        //店舗名
+        public string ShopName { get; set; }
+        //売上高
+        public int Amount { get; set; }
+        public　string Product { get; set; }
     }
 }
