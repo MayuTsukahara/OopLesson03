@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace Chapter4 {
     class Program {
-        static void Main(string[] args) {
+        static void Main(string[] args) 
+            
+            
+            {
             var ymArray = new YearMonth[] {
                 new YearMonth(1996,3),
                 new YearMonth(2001,1),
@@ -22,21 +25,20 @@ namespace Chapter4 {
             }
             Console.WriteLine();
 
-            if (ymArray == null)
+
+            var ymSerch = ReyearMonth(ymArray);
+            if (ymSerch == null)
                 Console.WriteLine("21世紀のデータはありません");
             else
-                Console.WriteLine(ymArray);
+                Console.WriteLine(ReyearMonth(ymArray).ToString());
             Console.WriteLine();
+
+
 
             var ymArrayPlus = ymArray.Select(ym=> ym.AddOneMonth()).OrderBy(ym=> ym.Month).OrderBy(ym=> ym.Year);
             foreach (var ym in ymArrayPlus) {
                 Console.WriteLine(ym.ToString());
             }
-
-
-
-
-
 
 
 

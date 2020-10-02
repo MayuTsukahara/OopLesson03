@@ -8,7 +8,7 @@ namespace Chapter4 {
     class YearMonth {
         public int Year { get; private set; }
         public int Month { get; private set; }
-        public bool Is21Century => Year <= 2001 && Year >= 2100 ? true : false; 
+        public bool Is21Century => Year >= 2001 && Year <= 2100 ? true : false; 
         public YearMonth(int year,int month) {
             Year = year;
             Month = month;
