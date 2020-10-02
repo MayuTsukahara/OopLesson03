@@ -33,27 +33,30 @@ namespace chapter5 {
 
 
 
-            var str4 = "Jackdaws love my big sphinx of quartz";
+            //var str4 = "Jackdaws love my big sphinx of quartz";
 
-            int kuhaku = str4.Count(s=> s == ' ');
-            Console.WriteLine(kuhaku+"個の空白");
+            //int kuhaku = str4.Count(s=> s == ' ');
+            //Console.WriteLine(kuhaku+"個の空白");
 
-            var replaced = str4.Replace("big","small");
-            Console.WriteLine(str4);
+            //var replaced = str4.Replace("big","small");
+            //Console.WriteLine(str4);
 
-            int tango = str4.Split(' ').Length;
-            Console.WriteLine(tango+"個の単語");
+            //int tango = str4.Split(' ').Length;
+            //Console.WriteLine(tango+"個の単語");
 
-            var tango2 = str4.Split(' ').Where(s=> s.Length <=4);
-            tango2.ToList().ForEach(s=> Console.WriteLine(s));
+            //var tango2 = str4.Split(' ').Where(s=> s.Length <=4);
+            //tango2.ToList().ForEach(s=> Console.WriteLine(s));
 
-            var tango3 = str4.Split(' ');
-            var sb = new StringBuilder();
-            foreach (var s in tango3) {
-                sb.Append(s + " ");
-            }
-            var text = sb.ToString();
-            Console.WriteLine(text);
+            //var tango3 = str4.Split(' ');
+            //var sb = new StringBuilder();
+            //foreach (var s in tango3) {
+            //    sb.Append(s + " ");
+            //}
+            //var text = sb.ToString();
+            //Console.WriteLine(text);
+
+
+            var text = "Novelist=谷崎潤一郎;Bestwork=春琴抄;Bor=1886";
 
         }
     }
