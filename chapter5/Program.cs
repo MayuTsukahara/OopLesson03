@@ -8,6 +8,7 @@ namespace chapter5 {
     class Program {
         static void Main(string[] args) {
 
+            #region 演習5.1
             //Console.Write("文字を入力してください：");
             //var str1 = Console.ReadLine();
             //Console.Write("文字を入力してください：");
@@ -18,9 +19,10 @@ namespace chapter5 {
             //else
             //    Console.WriteLine("等しくない");
             //Console.WriteLine();
+            #endregion
 
 
-
+            #region 演習5.2
             //Console.Write("数字を入力してください：");
             //var str3 = Console.ReadLine();
             //int num1;
@@ -29,9 +31,10 @@ namespace chapter5 {
             //} else {
             //    Console.WriteLine("数値文字列でありません");
             //}
+            #endregion
 
 
-
+            #region 演習5.3
 
             //var str4 = "Jackdaws love my big sphinx of quartz";
 
@@ -54,14 +57,16 @@ namespace chapter5 {
             //}
             //var text = sb.ToString();
             //Console.WriteLine(text);text.Split(';');
+            #endregion
 
-
+            #region 演習5.4
             var text = "Novelist=谷崎潤一郎;Bestwork=春琴抄;Born=1886";
             var t = text.Replace("Novelist=", "作家　：").Replace("Bestwork=", "代表作：").Replace("Born=","誕生年：").Split(';');
             foreach (var tango in t) {
                 Console.WriteLine(tango);
 
             }
+            #endregion
 
         }
     }
