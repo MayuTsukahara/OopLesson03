@@ -53,10 +53,15 @@ namespace chapter5 {
             //    sb.Append(s + " ");
             //}
             //var text = sb.ToString();
-            //Console.WriteLine(text);
+            //Console.WriteLine(text);text.Split(';');
 
 
-            var text = "Novelist=谷崎潤一郎;Bestwork=春琴抄;Bor=1886";
+            var text = "Novelist=谷崎潤一郎;Bestwork=春琴抄;Born=1886";
+            var t = text.Replace("Novelist=", "作家　：").Replace("Bestwork=", "代表作：").Replace("Born=","誕生年：").Split(';');
+            foreach (var tango in t) {
+                Console.WriteLine(tango);
+
+            }
 
         }
     }
