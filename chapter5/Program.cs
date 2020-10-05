@@ -18,6 +18,8 @@ namespace chapter5 {
             //    Console.WriteLine("等しい");
             //else
             //    Console.WriteLine("等しくない");
+            
+            
             //Console.WriteLine();
             #endregion
 
@@ -38,17 +40,17 @@ namespace chapter5 {
 
             //var str4 = "Jackdaws love my big sphinx of quartz";
 
-            //int kuhaku = str4.Count(s=> s == ' ');
-            //Console.WriteLine(kuhaku+"個の空白");
+            //int kuhaku = str4.Count(s => s == ' ');
+            //Console.WriteLine(kuhaku + "個の空白");
 
-            //var replaced = str4.Replace("big","small");
+            //var replaced = str4.Replace("big", "small");
             //Console.WriteLine(str4);
 
             //int tango = str4.Split(' ').Length;
-            //Console.WriteLine(tango+"個の単語");
+            //Console.WriteLine(tango + "個の単語");
 
-            //var tango2 = str4.Split(' ').Where(s=> s.Length <=4);
-            //tango2.ToList().ForEach(s=> Console.WriteLine(s));
+            //var tango2 = str4.Split(' ').Where(s => s.Length <= 4);
+            //tango2.ToList().ForEach(s => Console.WriteLine(s));
 
             //var tango3 = str4.Split(' ');
             //var sb = new StringBuilder();
@@ -56,18 +58,39 @@ namespace chapter5 {
             //    sb.Append(s + " ");
             //}
             //var text = sb.ToString();
-            //Console.WriteLine(text);text.Split(';');
+            //Console.WriteLine(text); text.Split(';');
             #endregion
 
             #region 演習5.4
             var text = "Novelist=谷崎潤一郎;Bestwork=春琴抄;Born=1886";
-            var t = text.Replace("Novelist=", "作家　：").Replace("Bestwork=", "代表作：").Replace("Born=","誕生年：").Split(';');
-            foreach (var tango in t) {
-                Console.WriteLine(tango);
+            //var t = text.Replace("Novelist=", "作家　：").Replace("Bestwork=", "代表作：").Replace("Born=","誕生年：").Split(';');
+            //foreach (var tango in t) {
+            //    Console.WriteLine(tango);
 
+            //}
+            foreach (var item in text.Split(';')) {
+                var word = item.Split('=');
+                Console.WriteLine("{0}{1}", ToJapanese(word[0]), word[1]);
             }
+
             #endregion
 
+        }
+        static string ToJapanese(string key) {
+            switch (key) {
+                case "Novelist":
+                return "作家　：";
+
+                case "Bestwork":
+                return "代表作：";
+
+                case "Born":
+                return "誕生年：";
+
+                default:
+                return "　　　　　";
+
+            }
         }
     }
 }
