@@ -52,7 +52,8 @@ namespace chapter6 {
                 Console.Write(numbers[i]+ " ");
             }
             Console.WriteLine();
-            var nu = numbers.Skip(9).Take(2);
+            var q = numbers.Length - 2;
+            var nu = numbers.Skip(q).Take(2);
             foreach (var item in nu) {
                 Console.Write(item + "/ ");
             }
@@ -85,7 +86,7 @@ namespace chapter6 {
             };
 
             //6.2.1
-            books.Where(b => b.Title == "ワンダフル・C#ライフ").ToList().ForEach(b=>Console.Write(b.Price +"円"+ b.Pages+"ページ"));
+            books.Where(b => b.Title == "ワンダフル・C#ライフ").ToList().ForEach(b=>Console.Write(b.Price +"円　"+ b.Pages+"ページ"));
             Console.WriteLine();
 
             //6.2.2
@@ -96,6 +97,18 @@ namespace chapter6 {
 
             //6.2.4
             Console.WriteLine(books.Where(b => b.Price > 4000).FirstOrDefault().Title);
+
+            //6.2.5
+            Console.WriteLine(books.Where(b=>b.Pages<4000).Max(b=>b.Pages));
+
+            //6.2.6
+            books.Where(b => b.Pages >= 400).OrderByDescending(b => b.Price).ToList().ForEach(b=>Console.Write(b.Title + " "));
+            Console.WriteLine();
+
+            //6.2.7
+            books.Where(b => b.Title.Contains("C#") && b.Pages < 500).ToList().ForEach(b => Console.Write(b.Title+" "));
+            Console.WriteLine();
+
             #endregion
         }
     }
