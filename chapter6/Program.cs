@@ -48,7 +48,14 @@ namespace chapter6 {
             Console.WriteLine("最大値は"+numbers.Max(n => n));
 
             //6.1.2
-            numbers.Take(2).ToList().ForEach(n=>Console.Write(n+" "));
+            for (int i = numbers.Length-1; i > numbers.Length -3 ; i--) {
+                Console.Write(numbers[i]+ " ");
+            }
+            Console.WriteLine();
+            var nu = numbers.Skip(9).Take(2);
+            foreach (var item in nu) {
+                Console.Write(item + "/ ");
+            }
             Console.WriteLine();
 
             //6.1.3
@@ -59,6 +66,36 @@ namespace chapter6 {
             numbers.OrderBy(n => n).Take(3).ToList().ForEach(n=>Console.Write(n+" "));
             Console.WriteLine();
 
+            //6.1.5
+            Console.WriteLine(numbers.Distinct().Count(n => n > 10).ToString());
+
+
+
+            #endregion
+
+            #region 演習６‐２
+            var books = new List<Book> {
+            new Book { Title = "C#プログラミングの新常識", Price = 3800, Pages = 378 },
+            new Book { Title = "ラムダ式とLINQの極意", Price = 2500, Pages = 312 },
+            new Book { Title = "ワンダフル・C#ライフ", Price = 2900, Pages = 385 },
+            new Book { Title = "一人で学ぶ並列処理プログラミング", Price = 4800, Pages = 464 },
+            new Book { Title = "フレーズで覚えるC#入門", Price = 5300, Pages = 604 },
+            new Book { Title = "私でも分かったASP.NET MVC", Price = 3200, Pages = 453 },
+            new Book { Title = "楽しいC#プログラミング教室", Price = 2540, Pages = 348 },
+            };
+
+            //6.2.1
+            books.Where(b => b.Title == "ワンダフル・C#ライフ").ToList().ForEach(b=>Console.Write(b.Price +"円"+ b.Pages+"ページ"));
+            Console.WriteLine();
+
+            //6.2.2
+            Console.WriteLine("C#を含む本は"+books.Where(b => b.Title.Contains("C#")).Count()+"冊");
+
+            //6.2.3
+            Console.WriteLine("C#を含む本の平均ページ数は"+books.Where(b => b.Title.Contains("C#")).Average(b => b.Pages));
+
+            //6.2.4
+            Console.WriteLine(books.Where(b => b.Price > 4000).FirstOrDefault().Title);
             #endregion
         }
     }
