@@ -1,10 +1,7 @@
 ﻿using Chapter06;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace chapter6 {
     class Program {
@@ -108,6 +105,18 @@ namespace chapter6 {
             //6.2.7
             books.Where(b => b.Title.Contains("C#") && b.Pages < 500).ToList().ForEach(b => Console.Write(b.Title+" "));
             Console.WriteLine();
+
+
+
+            int count = 0;
+            foreach (var book in books.Where(b=>b.Title.Contains("C#"))) {
+                for (int i = 0; i < book.Title.Length-1; i++) {
+                    if (book.Title[i] == 'C' && book.Title[i + 1] == '#') {
+                        count++;
+                    }
+                }
+            }
+            Console.WriteLine($"[C#]の数は{count}");
 
             #endregion
         }
