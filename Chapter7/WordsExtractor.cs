@@ -16,7 +16,7 @@ namespace Chapter7 {
 
         // 10文字以上の単語を重複なくアルファベット順に列挙する。
         public IEnumerable<string> Extract() {
-            var hash = new HashSet<string>();    
+            var hash = new HashSet<string>();  //ハッシュセットで重複排除  
             foreach (var line in _lines) {
                 var words = GetWords(line);
                 foreach (var word in words) {
