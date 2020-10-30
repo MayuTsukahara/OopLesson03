@@ -6,7 +6,31 @@
         xmlns:local="clr-namespace:SendMailApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="件名：" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Text="To：" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Text="Cc：" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Text="Bcc：" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Text="本文：" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="kenmeiTBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="left" Text="" VerticalAlignment="Center" MinWidth="650" MinHeight="25" Margin="5"/>
+        <TextBox x:Name="toTBox" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="left" Text="" VerticalAlignment="Center" MinWidth="650" MinHeight="25" Margin="5"/>
+        <TextBox x:Name="ccTBox" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="left" Text="" VerticalAlignment="Center" MinWidth="650" MinHeight="25" Margin="5"/>
+        <TextBox x:Name="bccTBox" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="left" Text="" VerticalAlignment="Center" MinWidth="650" MinHeight="25" Margin="5"/>
+        <TextBox x:Name="honbunTBox" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="left" Text="" VerticalAlignment="Center" MinWidth="650" MinHeight="200" Margin="5"/>
     </Grid>
 </Window>
