@@ -5,32 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SendMailApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Margin="15">
+        Title="メール送信アプリ" Height="450" Width="500">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="44"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="350"/>
+
+
         </Grid.ColumnDefinitions>
-
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="件名：" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Text="To：" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Text="Cc：" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Text="Bcc：" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Text="本文：" VerticalAlignment="Top"/>
-
-        <TextBox x:Name="kenmeiTBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="left" Text="" VerticalAlignment="Center" MinWidth="650" MinHeight="25" Margin="5"/>
-        <TextBox x:Name="toTBox" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="left" Text="" VerticalAlignment="Center" MinWidth="650" MinHeight="25" Margin="5"/>
-        <TextBox x:Name="ccTBox" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="left" Text="" VerticalAlignment="Center" MinWidth="650" MinHeight="25" Margin="5"/>
-        <TextBox x:Name="bccTBox" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="left" Text="" VerticalAlignment="Center" MinWidth="650" MinHeight="25" Margin="5"/>
-        <TextBox x:Name="honbunTBox" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="left" Text="" VerticalAlignment="Center" MinWidth="650" MinHeight="200" Margin="5"/>
+        <TextBlock Grid.Row="1"  VerticalAlignment="Center" Text="　　件名：" Height="16" Margin="0,10"/>
+        <TextBox x:Name="tbTitle" Grid.Row="1" Grid.Column="1" Margin="0,5,-50,5"/>
+        <TextBlock Grid.Row="2"  VerticalAlignment="Center" Text="　　To：" Height="16" Margin="0,10"/>
+        <TextBox x:Name="tbTo" Grid.Row="2" Grid.Column="1" Margin="0,5,-50,5"/>
+        <TextBlock Grid.Row="3"  VerticalAlignment="Center" Text="　　Cc：" Height="16" Margin="0,10" />
+        <TextBox x:Name="tbCc" Grid.Row="3" Grid.Column="1" Margin="0,5,-50,5"/>
+        <TextBlock Grid.Row="4"  VerticalAlignment="Center" Text="　　Bcc：" Height="16" Margin="0,10"/>
+        <TextBox x:Name="tbBcc" Grid.Row="4" Grid.Column="1" Margin="0,5,-50,5"/>
+        <TextBlock Grid.Row="5"  VerticalAlignment="Top" Text="　　本文：" Height="16" Margin="0,5,0,0" />
+        <TextBox x:Name="tbBody" Grid.Row="5" Grid.Column="1" AcceptsReturn="True" TextWrapping="Wrap" VerticalContentAlignment="Top" Margin="0,5,-50,5" />
+        <StackPanel DockPanel.Dock="Bottom" Grid.Row="6" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right"  Width="170" RenderTransformOrigin="1.439,0.606" Margin="0,0,-50,0">
+            <Button x:Name="CancelButton" Content="キャンセル" Width="75" Margin="5"  Click="CancelButton_Click"/>
+            <Button x:Name="SeendButton" Content="送信" Width="75" Margin="5" Click="SendButton_Click"/>
+        </StackPanel>
     </Grid>
 </Window>
