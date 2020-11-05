@@ -45,10 +45,12 @@ namespace SendMailApp {
         private void SendButton_Click(object sender, RoutedEventArgs e) {
             try {
                 MailMessage msg = new MailMessage("ojsinfosys01@gmail.com", tbTo.Text);
-                foreach (var to in tbTo.Text.Split(',').ToList()) {
-                    msg.To.Add(to);
-                }
-
+                var ccList = tbCc.Text.Split(',').ToString().ToList();
+                var bccList = tbBcc.Text.Split(',').ToString().ToList();
+                if(tbCc.Text!="")
+                    msg.CC.Add(tbCc.Text);
+                if(tbBcc.Text!="")
+                    msg.Bcc.Add(tbBcc.Text);
 
                 msg.Subject = tbTitle.Text; //件名
                 msg.Body = tbBody.Text; //本文
