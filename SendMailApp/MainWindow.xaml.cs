@@ -70,5 +70,14 @@ namespace SendMailApp {
             }
 
         }
+        //設定画面表示
+        private void btConfig_Click(object sender, RoutedEventArgs e) {
+            ConfigWindow configWindow = new ConfigWindow(); //設定画面のインスタンス
+            configWindow.ShowDialog();  //表示
+        }
+        //メインウィンドウがロードされるタイミングで呼び出される
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
+
+        }
     }
 }
