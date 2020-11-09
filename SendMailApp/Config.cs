@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Xml;
 using System.Xml.Serialization;
@@ -75,17 +76,19 @@ namespace SendMailApp {
         }
         //逆シリアル化
         public void DeSerialize() {
-            using (var reader = XmlReader.Create("config.xml")) {
-                var serializer = new XmlSerializer(typeof(Config));
-                var obj = serializer.Deserialize(reader) as Config;
+            try {
+                using (var reader = XmlReader.Create("config.xml")) {
+                    var serializer = new XmlSerializer(typeof(Config));
+                    var obj = serializer.Deserialize(reader) as Config;
 
-                this.Smtp = obj.Smtp;
-                this.MailAddress = obj.MailAddress;
-                this.PassWord = obj.PassWord;
-                this.Port = obj.Port;
-                this.Ssl = obj.Ssl;
-
-
+                    this.Smtp = obj.Smtp;
+                    this.MailAddress = obj.MailAddress;
+                    this.PassWord = obj.PassWord;
+                    this.Port = obj.Port;
+                    this.Ssl = obj.Ssl;
+                }
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
             }
         }
 

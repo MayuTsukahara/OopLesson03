@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -37,13 +38,18 @@ namespace SendMailApp {
         }
         //適用ボタン
         private void btApply_Click(object sender, RoutedEventArgs e) {
-            (Config.GetInstance()).UpdateStatus(
-                tbSmtp.Text,
-                tbUseName.Text,
-                tbPass.Password,
-                int.Parse(tbPort.Text),
-                cbsl.IsChecked ?? false
-             );
+            try{
+                (Config.GetInstance()).UpdateStatus(
+                    tbSmtp.Text,
+                    tbUseName.Text,
+                    tbPass.Password,
+                    int.Parse(tbPort.Text),
+                    cbsl.IsChecked ?? false
+                 );
+            }
+            catch(Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
         //OKボタン
         private void btOk_Click(object sender, RoutedEventArgs e) {
