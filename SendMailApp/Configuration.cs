@@ -10,7 +10,10 @@ namespace SendMailApp {
     public class Config {
         private static Config instance = null;
         public static Config GetInstance() {
-            return instance ?? new Config();
+            if (instance==null) {
+                instance = new Config();
+            }
+            return instance;
         }
 
         public string Smtp { get; set; } //SMTPサーバ
@@ -29,7 +32,7 @@ namespace SendMailApp {
         public void DefaultSet() {
             Smtp = "smtp.gmail.com";
             MailAddress = "ojsinfosys01@gmail.com";
-            PassWord = "ojsinfosys2020";
+            PassWord = "ojsInfosys2020";
             Port = 587;
             Ssl = true;
         }
@@ -38,7 +41,7 @@ namespace SendMailApp {
             Config obj = new Config(){
                 Smtp = "smtp.gmail.com",
                 MailAddress = "ojsinfosys01@gmail.com",
-                PassWord = "ojsinfosys2020",
+                PassWord = "ojsInfosys2020",
                 Port = 587,
                 Ssl = true,
             };

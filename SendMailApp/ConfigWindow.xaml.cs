@@ -20,14 +20,7 @@ namespace SendMailApp {
     public partial class ConfigWindow : Window {
         public ConfigWindow() {
             InitializeComponent();
-            Config cf = Config.GetInstance();
-            //Config defaultData =  cf.getDefaultStatus();
-            tbSmtp.Text = cf.Smtp;
-            tbUseName.Text = cf.MailAddress;
-            tbPort.Text = cf.Port.ToString();
-            tbPass.Password = cf.PassWord;
-            tbSender.Text = cf.MailAddress;
-            cbsl.IsChecked = cf.Ssl;
+            
 
         }
         //初期値ボタン
@@ -45,9 +38,31 @@ namespace SendMailApp {
         //適用ボタン
         private void btApply_Click(object sender, RoutedEventArgs e) {
             (Config.GetInstance()).UpdateStatus(
-                tbSmtp.Text, tbSender.Text, tbPass.Password,
-                int.Parse(tbPort.Text), (bool)cbsl.IsChecked
+                tbSmtp.Text,
+                tbUseName.Text,
+                tbPass.Password,
+                int.Parse(tbPort.Text),
+                cbsl.IsChecked ?? false
              );
+        }
+        //OKボタン
+        private void btOk_Click(object sender, RoutedEventArgs e) {
+            btApply_Click(sender,e);
+            btCancel_Click(sender,e);
+        }
+        //キャンセルボタン
+        private void btCancel_Click(object sender, RoutedEventArgs e) {
+            this.Close();
+        }
+        //ロード１回呼び出し
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
+            Config cf = Config.GetInstance();
+            tbSmtp.Text = cf.Smtp;
+            tbUseName.Text = cf.MailAddress;
+            tbPort.Text = cf.Port.ToString();
+            tbPass.Password = cf.PassWord;
+            tbSender.Text = cf.MailAddress;
+            cbsl.IsChecked = cf.Ssl;
         }
     }
 }

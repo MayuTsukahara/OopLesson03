@@ -44,7 +44,10 @@ namespace SendMailApp {
         //メース送信処理
         private void SendButton_Click(object sender, RoutedEventArgs e) {
             try {
-                MailMessage msg = new MailMessage("ojsinfosys01@gmail.com", tbTo.Text);
+                Config cf = Config.GetInstance();
+
+
+                MailMessage msg = new MailMessage(cf.MailAddress, tbTo.Text);
                 var ccList = tbCc.Text.Split(',').ToString().ToList();
                 var bccList = tbBcc.Text.Split(',').ToString().ToList();
                 if(tbCc.Text!="")
@@ -56,10 +59,11 @@ namespace SendMailApp {
                 msg.Body = tbBody.Text; //本文
 
 
-                sc.Host = "smtp.gmail.com"; //SMTPサーバの設定
-                sc.Port = 587;
-                sc.EnableSsl = true;
-                sc.Credentials = new NetworkCredential("ojsinfosys01@gmail.com", "ojsInfosys2020");
+
+                sc.Host = cf.Smtp; //SMTPサーバの設定
+                sc.Port = cf.Port;
+                sc.EnableSsl = cf.Ssl;
+                sc.Credentials = new NetworkCredential(cf.MailAddress, cf.PassWord);
 
                 //sc.Send(msg);  //送信
                 sc.SendMailAsync(msg);
