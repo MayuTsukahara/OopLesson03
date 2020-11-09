@@ -81,7 +81,11 @@ namespace SendMailApp {
         }
         //メインウィンドウがロードされるタイミングで呼び出される
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-
+            Config.GetInstance().DeSerialize();
+        }
+        //閉じるタイミング
+        private void Window_Closed(object sender, EventArgs e) {
+            Config.GetInstance().Serialize();
         }
     }
 }

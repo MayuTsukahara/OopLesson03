@@ -64,5 +64,6 @@ namespace SendMailApp {
             tbSender.Text = cf.MailAddress;
             cbsl.IsChecked = cf.Ssl;
         }
+        
     }
 }
