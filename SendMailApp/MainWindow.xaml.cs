@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -25,6 +26,7 @@ namespace SendMailApp {
         public MainWindow() {
             InitializeComponent();
             sc.SendCompleted += Sc_sendCompleted;
+
         }
 
         //送信完了イベント
@@ -76,12 +78,23 @@ namespace SendMailApp {
         }
         //設定画面表示
         private void btConfig_Click(object sender, RoutedEventArgs e) {
+            ConfigWindowShow();
+        }
+
+        private static void ConfigWindowShow() {
             ConfigWindow configWindow = new ConfigWindow(); //設定画面のインスタンス
             configWindow.ShowDialog();  //表示
         }
+
         //メインウィンドウがロードされるタイミングで呼び出される
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            Config.GetInstance().DeSerialize();
+            try {
+                Config.GetInstance().DeSerialize();
+            } catch (FileNotFoundException) {
+                ConfigWindowShow();
+            } catch (Exception ex) {
+                  MessageBox.Show(ex.Message);
+            }
         }
         //閉じるタイミング
         private void Window_Closed(object sender, EventArgs e) {

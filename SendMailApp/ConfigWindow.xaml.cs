@@ -9,21 +9,25 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MessageBox = System.Windows.MessageBox;
 
 namespace SendMailApp {
     /// <summary>
     /// ConfigWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class ConfigWindow : Window {
+        public bool change = false;
         public ConfigWindow() {
             InitializeComponent();
             
 
         }
+        
         //初期値ボタン
         private void btDefault_Click(object sender, RoutedEventArgs e) {
             //初期値をもらってくる
@@ -38,27 +42,39 @@ namespace SendMailApp {
         }
         //適用ボタン
         private void btApply_Click(object sender, RoutedEventArgs e) {
-            try{
+            
+            try {
                 (Config.GetInstance()).UpdateStatus(
                     tbSmtp.Text,
                     tbUseName.Text,
                     tbPass.Password,
                     int.Parse(tbPort.Text),
                     cbsl.IsChecked ?? false
-                 );
+                );
+                changeOK();
+            } catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
             }
-            catch(Exception ex) {
-                MessageBox.Show(ex.Message);
-            }
+           
         }
         //OKボタン
         private void btOk_Click(object sender, RoutedEventArgs e) {
-            btApply_Click(sender,e);
-            btCancel_Click(sender,e);
+            if (tbSmtp.Text == "" || tbUseName.Text == "" || tbPort.Text == "" || tbPass.Password == "") {
+                MessageBox.Show("未入力の情報があります");
+            } else {
+                btApply_Click(sender,e);
+                btCancel_Click(sender,e);
+            }
         }
         //キャンセルボタン
         private void btCancel_Click(object sender, RoutedEventArgs e) {
-            this.Close();
+            if (change==true) {
+                MessageBoxResult result = MessageBox.Show("変更が保存さていませんが、ウィンドウを閉じますか？", "キャプション", MessageBoxButton.OKCancel);
+                if (result == MessageBoxResult.OK) 
+                    this.Close(); 
+            } else {
+                this.Close();
+            }
         }
         //ロード１回呼び出し
         private void Window_Loaded(object sender, RoutedEventArgs e) {
@@ -70,6 +86,16 @@ namespace SendMailApp {
             tbSender.Text = cf.MailAddress;
             cbsl.IsChecked = cf.Ssl;
         }
-        
+
+        private void textChange(object sender, TextChangedEventArgs e) {
+            change = true;
+        }
+
+        private void passChange(object sender, RoutedEventArgs e) {
+            change = true;
+        }
+        private void changeOK() {
+            change = false;
+        }
     }
 }
