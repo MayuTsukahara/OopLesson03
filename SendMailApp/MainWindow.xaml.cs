@@ -62,6 +62,11 @@ namespace SendMailApp {
                 msg.Subject = tbTitle.Text; //件名
                 msg.Body = tbBody.Text; //本文
 
+                foreach (var item in tempList.Items) {
+                    Attachment i = new Attachment(item.ToString());
+                    msg.Attachments.Add(i);
+                }
+                
 
 
                 sc.Host = cf.Smtp; //SMTPサーバの設定
