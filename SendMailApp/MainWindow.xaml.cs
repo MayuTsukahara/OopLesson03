@@ -63,8 +63,7 @@ namespace SendMailApp {
                 msg.Body = tbBody.Text; //本文
 
                 foreach (var item in tempList.Items) {
-                    Attachment i = new Attachment(item.ToString());
-                    msg.Attachments.Add(i);
+                    msg.Attachments.Add(new Attachment(item.ToString()));
                 }
                 
 
