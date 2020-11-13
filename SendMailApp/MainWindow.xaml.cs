@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -56,6 +57,7 @@ namespace SendMailApp {
                     msg.CC.Add(tbCc.Text);
                 if(tbBcc.Text!="")
                     msg.Bcc.Add(tbBcc.Text);
+                //msg.Attachments.Add(tempList.Items.);
 
                 msg.Subject = tbTitle.Text; //件名
                 msg.Body = tbBody.Text; //本文
@@ -99,6 +101,18 @@ namespace SendMailApp {
         //閉じるタイミング
         private void Window_Closed(object sender, EventArgs e) {
             Config.GetInstance().Serialize();
+        }
+        //添付追加
+        private void addButton_Click(object sender, RoutedEventArgs e) {
+            var openD = new OpenFileDialog();
+            openD.Filter = "全てのファイル (*.*)|*.*";
+            if (openD.ShowDialog()==true) {
+                tempList.Items.Add(openD.FileName);
+            }
+        }
+        //添付削除
+        private void deleteButton_Click(object sender, RoutedEventArgs e) {
+            tempList.Items.Clear();
         }
     }
 }

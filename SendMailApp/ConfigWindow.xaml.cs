@@ -51,7 +51,7 @@ namespace SendMailApp {
                     int.Parse(tbPort.Text),
                     cbsl.IsChecked ?? false
                 );
-                changeOK();
+                changeOK(sender,e);
             } catch (Exception ex) {
                     MessageBox.Show(ex.Message);
             }
@@ -69,15 +69,19 @@ namespace SendMailApp {
         //キャンセルボタン
         private void btCancel_Click(object sender, RoutedEventArgs e) {
             if (change==true) {
-                MessageBoxResult result = MessageBox.Show("変更が保存さていませんが、ウィンドウを閉じますか？", "キャプション", MessageBoxButton.OKCancel);
-                if (result == MessageBoxResult.OK) 
-                    this.Close(); 
+                MessageBoxResult result = MessageBox.Show("変更が保存さていませんが、ウィンドウを閉じますか？", "注意", MessageBoxButton.OKCancel);
+                    if (result == MessageBoxResult.OK) {
+                        changeOK(sender, e);
+                        this.Close();
+                    }
             } else {
+                changeOK(sender,e);
                 this.Close();
             }
         }
         //ロード１回呼び出し
         private void Window_Loaded(object sender, RoutedEventArgs e) {
+            
             Config cf = Config.GetInstance();
             tbSmtp.Text = cf.Smtp;
             tbUseName.Text = cf.MailAddress;
@@ -85,6 +89,7 @@ namespace SendMailApp {
             tbPass.Password = cf.PassWord;
             tbSender.Text = cf.MailAddress;
             cbsl.IsChecked = cf.Ssl;
+            changeOK(sender, e);
         }
 
         private void textChange(object sender, TextChangedEventArgs e) {
@@ -94,7 +99,7 @@ namespace SendMailApp {
         private void passChange(object sender, RoutedEventArgs e) {
             change = true;
         }
-        private void changeOK() {
+        private void changeOK(object sender, RoutedEventArgs e) {
             change = false;
         }
     }

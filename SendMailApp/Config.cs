@@ -73,14 +73,14 @@ namespace SendMailApp {
         }
         //逆シリアル化
         public void DeSerialize() {
-            //try {
+            try {
                 using (var reader = XmlReader.Create("config.xml")) {
                     var serializer = new XmlSerializer(typeof(Config));
                     var instance = serializer.Deserialize(reader) as Config;  
                 }
-            //} catch (Exception ex) {
-            //    MessageBox.Show(ex.Message);
-            //}
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
     }
