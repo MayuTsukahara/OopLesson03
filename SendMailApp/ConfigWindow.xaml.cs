@@ -42,18 +42,19 @@ namespace SendMailApp {
         }
         //適用ボタン
         private void btApply_Click(object sender, RoutedEventArgs e) {
-            
-            try {
-                (Config.GetInstance()).UpdateStatus(
-                    tbSmtp.Text,
-                    tbUseName.Text,
-                    tbPass.Password,
-                    int.Parse(tbPort.Text),
-                    cbsl.IsChecked ?? false
-                );
-                changeOK(sender,e);
-            } catch (Exception ex) {
+            if (textChecker(sender, e)) {
+                try {
+                    (Config.GetInstance()).UpdateStatus(
+                        tbSmtp.Text,
+                        tbUseName.Text,
+                        tbPass.Password,
+                        int.Parse(tbPort.Text),
+                        cbsl.IsChecked ?? false
+                    );
+                    changeOK(sender, e);
+                } catch (Exception ex) {
                     MessageBox.Show(ex.Message);
+                }
             }
            
         }
@@ -63,7 +64,7 @@ namespace SendMailApp {
                 MessageBox.Show("未入力の情報があります");
             } else {
                 btApply_Click(sender,e);
-                btCancel_Click(sender,e);
+                if (textChecker(sender,e)) btCancel_Click(sender,e);
             }
         }
         //キャンセルボタン
@@ -78,6 +79,17 @@ namespace SendMailApp {
                 changeOK(sender,e);
                 this.Close();
             }
+        }
+        //入力文字チェック
+        private bool textChecker(object sender, RoutedEventArgs e) {
+            var check = false;
+            if (tbUseName.Text.Contains('@') == false) {
+                MessageBoxResult result = MessageBox.Show("ユーザーネームを確認してください", "注意", MessageBoxButton.OK);
+                check = false;
+            } else {
+                check = true;
+            }
+            return check;
         }
         //ロード１回呼び出し
         private void Window_Loaded(object sender, RoutedEventArgs e) {

@@ -85,6 +85,7 @@ namespace SendMailApp {
         //設定画面表示
         private void btConfig_Click(object sender, RoutedEventArgs e) {
             ConfigWindowShow();
+            
         }
 
         private static void ConfigWindowShow() {
