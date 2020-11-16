@@ -55,6 +55,8 @@ namespace SendMailApp {
                 } catch (Exception ex) {
                     MessageBox.Show(ex.Message);
                 }
+            } else {
+                MessageBox.Show("ユーザーネーム、ポート番号を確認してください");
             }
            
         }
@@ -83,8 +85,7 @@ namespace SendMailApp {
         //入力文字チェック
         private bool textChecker(object sender, RoutedEventArgs e) {
             var check = false;
-            if (tbUseName.Text.Contains('@') == false) {
-                MessageBoxResult result = MessageBox.Show("ユーザーネームを確認してください", "注意", MessageBoxButton.OK);
+            if (tbUseName.Text.Contains('@') == false || int.TryParse(tbPort.Text,out var i) == false ) {
                 check = false;
             } else {
                 check = true;

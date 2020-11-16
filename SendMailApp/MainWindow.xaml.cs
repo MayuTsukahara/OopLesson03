@@ -77,7 +77,11 @@ namespace SendMailApp {
                 sc.SendMailAsync(msg);
 
 
-            } catch (Exception ex) {
+            }catch (ArgumentException) {
+                MessageBox.Show("Toに送信先メールアドレスを入力してください");
+            }catch (SmtpException) {
+                MessageBox.Show("SMTPを確認してください");
+            }catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
 

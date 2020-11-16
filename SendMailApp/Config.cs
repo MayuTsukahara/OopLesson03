@@ -79,6 +79,8 @@ namespace SendMailApp {
                     var serializer = new XmlSerializer(typeof(Config));
                     instance = serializer.Deserialize(reader) as Config;  
                 }
+            //} catch (IOException) {
+
             //} catch (Exception ex) {
             //    MessageBox.Show(ex.Message);
             //}
